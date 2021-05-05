@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './index.css';
+import  './index.css';
 
 
 
@@ -12,7 +12,7 @@ var calculatePayment =function(principal,years,rate){
     var interestY =0;
     var principalY =0;
     for(var m=0;m<12;m++){
-      var interestM = balance * maonthlyRate;
+      var interestM = balance * monthlyRate;
       var principalM =monthyPayment -interestM;
       interestY =interestY + interestM;
       principalY =principalY +principalM;
@@ -74,6 +74,17 @@ render:function(){
 
 });
 
+var App = React.createClass({
+  render:function(){
+    return(
+      <div>
+        <header title ="React Mortgage Calculator"/>
+        <MortgageCalculator principal ="200000" years ="30" rate ="5"/>
+      </div>
+    )
+  }
+});
+
 
 
 var Header = React.createClass({
@@ -89,14 +100,9 @@ render:function(){
 
 
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />,document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
